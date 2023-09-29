@@ -2,15 +2,12 @@ package jpabook.model.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by holyeye on 2014. 3. 11..
- */
 @Entity
 @Table(name = "ORDER_ITEM")
 public class OrderItem {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 

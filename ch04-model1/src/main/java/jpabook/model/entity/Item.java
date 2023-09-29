@@ -2,14 +2,11 @@ package jpabook.model.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by holyeye on 2014. 3. 11..
- */
-
 @Entity
 public class Item {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ITEM_ID")
     private Long id;
 
