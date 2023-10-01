@@ -31,11 +31,17 @@ public class Main {
 
         tx.commit();
 
+        System.out.println("뭐야야야");
+        Team team1 = em.find(Team.class, "team1");
+        System.out.println(team1.getMembers());
+
         queryLogicJoin(em);
 
-        updateRelation(em);
+//        updateRelation(em);
 
-        deleteRelation(em);
+//        deleteRelation(em);
+
+        biDirection(em);
     }
 
     private static void queryLogicJoin(EntityManager entityManager) {
@@ -77,5 +83,21 @@ public class Main {
         member.setTeam(null);
 
         transaction.commit();
+    }
+
+    private static void biDirection(EntityManager entityManager) {
+        System.out.println("===========양방향 매핑===========");
+
+        Member member1 = entityManager.find(Member.class, "member1");
+        System.out.println(member1.getTeam().getId());
+
+        Team team = entityManager.find(Team.class, "team1");
+
+        List<Member> members = team.getMembers();
+        System.out.println(members);
+
+        for (Member member : members) {
+            System.out.println(member.getUsername());
+        }
     }
 }
